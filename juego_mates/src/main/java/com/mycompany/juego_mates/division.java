@@ -11,10 +11,15 @@ package com.mycompany.juego_mates;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.util.Random;
-import javax.swing.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class division extends JFrame {
     Random random = new Random();
+
     public division() {
         /**
          * Creación de la ventana
@@ -46,14 +51,12 @@ public class division extends JFrame {
 
         botonVolver.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/botonAtras.png")
-                )
-        );
+                        getClass().getResource("/botonAtras.png")));
 
         botonVolver.addActionListener(e -> {
             menuPrincipal ventana = new menuPrincipal();
             ventana.setVisible(true);
-            this.setVisible(false);
+            this.dispose();
         });
         /**
          * Boton derecha
@@ -62,14 +65,12 @@ public class division extends JFrame {
          */
         BotonDerecha.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/flechaDere.jpg")
-                )
-        );
+                        getClass().getResource("/flechaDere.jpg")));
 
         BotonDerecha.addActionListener(e -> {
             division ventana = new division();
             ventana.setVisible(true);
-            this.setVisible(false);
+            this.dispose();
         });
         add(panelBotones, BorderLayout.SOUTH);
         add(panelBotonDerecha, BorderLayout.EAST);

@@ -14,7 +14,11 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.util.Random;
-import javax.swing.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class resta extends JFrame {
 
@@ -52,8 +56,8 @@ public class resta extends JFrame {
          *
          */
         JButton botonVolver = new JButton("");
-         BotonDerecha = new JButton("");
-         BotonIzquierda = new JButton("");
+        BotonDerecha = new JButton("");
+        BotonIzquierda = new JButton("");
 
         panelBotones.add(botonVolver);
         panelBotonesDerecha.add(BotonDerecha);
@@ -76,9 +80,7 @@ public class resta extends JFrame {
          */
         botonVolver.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/botonAtras.png")
-                )
-        );
+                        getClass().getResource("/botonAtras.png")));
         botonVolver.addActionListener(e -> {
             menuPrincipal ventana = new menuPrincipal();
             ventana.setVisible(true);
@@ -90,9 +92,7 @@ public class resta extends JFrame {
          */
         BotonDerecha.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/flechaDere.jpg")
-                )
-        );
+                        getClass().getResource("/flechaDere.jpg")));
 
         BotonDerecha.addActionListener(e -> {
             if (paginaActual < 3) {
@@ -105,9 +105,7 @@ public class resta extends JFrame {
 
         BotonIzquierda.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/flechaIzq.jpg")
-                )
-        );
+                        getClass().getResource("/flechaIzq.jpg")));
 
         BotonIzquierda.addActionListener(e -> {
             if (paginaActual > 1) {
@@ -145,6 +143,5 @@ public class resta extends JFrame {
     private void actualizarPagina() {
         BotonIzquierda.setVisible(paginaActual > 1);
         BotonDerecha.setVisible(paginaActual < totalPaginas);
-    }
-;
+    };
 }

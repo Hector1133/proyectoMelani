@@ -10,8 +10,11 @@ package com.mycompany.juego_mates;
  */
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import javax.swing.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class menuPrincipal extends JFrame {
 
@@ -56,20 +59,17 @@ public class menuPrincipal extends JFrame {
             resta ventana = new resta();
             ventana.setVisible(true);
             this.dispose();
-        }
-        );
+        });
         botonDividir.addActionListener(e -> {
             division ventana = new division();
             ventana.setVisible(true);
             this.dispose();
-        }
-        );
+        });
         botonMultiplicar.addActionListener(e -> {
             multiplicacion ventana = new multiplicacion();
             ventana.setVisible(true);
             this.dispose();
-        }
-        );
+        });
         add(menu, BorderLayout.NORTH);
 
     }
