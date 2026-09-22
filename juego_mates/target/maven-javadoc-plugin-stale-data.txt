@@ -1,0 +1,43 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+--no-fonts
+-encoding
+'UTF-8'
+-protected
+--release
+19
+-sourcepath
+'C:/Users/Usuario/Documents/NetBeansProjects/melani/juego_mates/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2026. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Usuario/Documents/NetBeansProjects/melani/juego_mates/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'juego_mates 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'juego_mates 1.0-SNAPSHOT API'
+com.mycompany.juego_mates
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\src\main\java = 1789397245770
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\allclasses-index.html = 1790090668382
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\allpackages-index.html = 1790090668384
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\element-list = 1790090668334
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\help-doc.html = 1790090668398
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\index-all.html = 1790090668393
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\index.html = 1790090668396
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\member-search-index.js = 1790090668387
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\module-search-index.js = 1790090668384
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\overview-tree.html = 1790090668375
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\package-search-index.js = 1790090668386
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\search.html = 1790090668395
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\serialized-form.html = 1790090668360
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\tag-search-index.js = 1790090668388
+C:\Users\Usuario\Documents\NetBeansProjects\melani\juego_mates\target\reports\apidocs\type-search-index.js = 1790090668386
