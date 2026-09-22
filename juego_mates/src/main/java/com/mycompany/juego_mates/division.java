@@ -10,6 +10,14 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.util.Random;
+<<<<<<< HEAD
+=======
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+>>>>>>> ff211665d9201ebc51290f3251421f1b872ab233
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,6 +34,7 @@ import javax.swing.JTextArea;
  * @version 1.0
  */
 public class division extends JFrame {
+<<<<<<< HEAD
 
     /** Administrador de diseño para controlar el cambio de páginas en el carrusel. */
     private CardLayout cardLayout;
@@ -50,6 +59,10 @@ public class division extends JFrame {
      * Configura los elementos gráficos del carrusel, carga las imágenes de las flechas,
      * inicializa los eventos de navegación y ensambla la interfaz de usuario.
      */
+=======
+    Random random = new Random();
+
+>>>>>>> ff211665d9201ebc51290f3251421f1b872ab233
     public division() {
         Random random = new Random();
         
@@ -91,9 +104,14 @@ public class division extends JFrame {
         // Configuración del botón de regresar al menú principal
         botonVolver.setIcon(
                 new javax.swing.ImageIcon(
+<<<<<<< HEAD
                         getClass().getResource("/botonAtras.png")
                 )
         );
+=======
+                        getClass().getResource("/botonAtras.png")));
+
+>>>>>>> ff211665d9201ebc51290f3251421f1b872ab233
         botonVolver.addActionListener(e -> {
             menuPrincipal ventana = new menuPrincipal();
             ventana.setVisible(true);
@@ -103,6 +121,7 @@ public class division extends JFrame {
         // Configuración del botón para ir a la derecha
         BotonDerecha.setIcon(
                 new javax.swing.ImageIcon(
+<<<<<<< HEAD
                         getClass().getResource("/flechaDere.jpg")
                 )
         );
@@ -112,6 +131,14 @@ public class division extends JFrame {
                 cardLayout.show(carrusel, "pagina" + paginaActual);
                 actualizarPagina();
             }
+=======
+                        getClass().getResource("/flechaDere.jpg")));
+
+        BotonDerecha.addActionListener(e -> {
+            division ventana = new division();
+            ventana.setVisible(true);
+            this.dispose();
+>>>>>>> ff211665d9201ebc51290f3251421f1b872ab233
         });
 
         // Configuración del botón para ir a la izquierda

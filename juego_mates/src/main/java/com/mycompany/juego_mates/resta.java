@@ -10,6 +10,14 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.util.Random;
+<<<<<<< HEAD
+=======
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+>>>>>>> ff211665d9201ebc51290f3251421f1b872ab233
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -91,9 +99,7 @@ public class resta extends JFrame {
         // Configuración del botón de regresar al menú principal
         botonVolver.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/botonAtras.png")
-                )
-        );
+                        getClass().getResource("/botonAtras.png")));
         botonVolver.addActionListener(e -> {
             menuPrincipal ventana = new menuPrincipal();
             ventana.setVisible(true);
@@ -103,9 +109,14 @@ public class resta extends JFrame {
         // Configuración del botón para ir a la derecha
         BotonDerecha.setIcon(
                 new javax.swing.ImageIcon(
+<<<<<<< HEAD
                         getClass().getResource("/flechaDere.jpg")
                 )
         );
+=======
+                        getClass().getResource("/flechaDere.jpg")));
+
+>>>>>>> ff211665d9201ebc51290f3251421f1b872ab233
         BotonDerecha.addActionListener(e -> {
             if (paginaActual < totalPaginas) {
                 paginaActual++;
@@ -117,9 +128,14 @@ public class resta extends JFrame {
         // Configuración del botón para ir a la izquierda
         BotonIzquierda.setIcon(
                 new javax.swing.ImageIcon(
+<<<<<<< HEAD
                         getClass().getResource("/flechaIzq.jpg")
                 )
         );
+=======
+                        getClass().getResource("/flechaIzq.jpg")));
+
+>>>>>>> ff211665d9201ebc51290f3251421f1b872ab233
         BotonIzquierda.addActionListener(e -> {
             if (paginaActual > 1) {
                 paginaActual--;
@@ -166,5 +182,10 @@ public class resta extends JFrame {
     private void actualizarPagina() {
         BotonIzquierda.setVisible(paginaActual > 1);
         BotonDerecha.setVisible(paginaActual < totalPaginas);
+<<<<<<< HEAD
     }
 }
+=======
+    };
+}
+>>>>>>> ff211665d9201ebc51290f3251421f1b872ab233
