@@ -7,10 +7,12 @@ package com.mycompany.juego_mates;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.util.Random;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +21,8 @@ import javax.swing.JTextArea;
 
 /**
  * Representa la interfaz gráfica y la lógica para el juego de restar.
- * Utiliza una estructura de carrusel (CardLayout) para mostrar diferentes páginas 
+ * Utiliza una estructura de carrusel (CardLayout) para mostrar diferentes
+ * páginas
  * con ejercicios matemáticos de restas por niveles.
  * 
  * @author Héctor Ruiz Rivera
@@ -27,32 +30,37 @@ import javax.swing.JTextArea;
  */
 public class suma extends JFrame {
 
-    /** Administrador de diseño para controlar el cambio de páginas en el carrusel. */
+    /**
+     * Administrador de diseño para controlar el cambio de páginas en el carrusel.
+     */
     private CardLayout cardLayout;
-    
+
     /** Panel contenedor que almacena las diferentes páginas del juego. */
     private JPanel carrusel;
-    
-    /** Índice que rastrea la página en la que se encuentra la jugadora actualmente. */
+
+    /**
+     * Índice que rastrea la página en la que se encuentra la jugadora actualmente.
+     */
     private int paginaActual = 1;
-    
+
     /** Cantidad total de páginas de ejercicios disponibles. */
     private int totalPaginas = 3;
 
     /** Botón para avanzar a la siguiente página de restas. */
     private JButton BotonDerecha;
-    
+
     /** Botón para retroceder a la página de restas anterior. */
     private JButton BotonIzquierda;
 
     /**
      * Constructor por defecto de la clase resta.
-     * Configura los elementos gráficos del carrusel, carga las imágenes de las flechas,
+     * Configura los elementos gráficos del carrusel, carga las imágenes de las
+     * flechas,
      * inicializa los eventos de navegación y ensambla la interfaz de usuario.
      */
     public suma() {
         Random random = new Random();
-        
+
         // Configuración y creación de la ventana
         setTitle("sumas");
         JLabel rest = new JLabel("¡Vamos a practicar las sumas!");
@@ -63,7 +71,7 @@ public class suma extends JFrame {
         setSize(800, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        
+
         // Creación de los botones de navegación
         JButton botonVolver = new JButton("");
         BotonDerecha = new JButton("");
@@ -78,38 +86,44 @@ public class suma extends JFrame {
 
         // Crear las "páginas" del carrusel gráfico
         JPanel pagina1 = crearPagina("Definición de una suma", Color.RED);
-        JTextArea definicion = new JTextArea("La suma matemática (o addición )"+
-        " es la acción de juntar, unir o agregar dos o más cosas "+
-        "o cantidades para saber cuántas hay en total");
-        pagina1.add(definicion);
+        JTextArea definicion = new JTextArea("La suma matemática (o addición )" +
+                " es la acción de juntar, unir o agregar dos o más cosas " +
+                "o cantidades para saber cuántas hay en total");
+
+        definicion.setPreferredSize(new Dimension(550, 180));
+        definicion.setFont(new Font("Arial", Font.PLAIN, 22));
         definicion.setLineWrap(true);
         definicion.setWrapStyleWord(true);
-        definicion.setEditable(false); // Evita que la jugadora pueda borrar o escribir en la definición
-        JPanel pagina2 = crearPagina("Página 2", Color.BLUE);
-        JPanel pagina3 = crearPagina("Página 3", Color.GREEN);
+        definicion.setEditable(false);
+        definicion.setFocusable(false);
+        definicion.setOpaque(false);
+        definicion.setBorder(
+                BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        pagina1.add(definicion);
+
+        JPanel pagina2 = crearPartesSuma();
+
+        JPanel pagina3 = crearPagina("Ejercios prácticos", Color.GREEN);
+        JPanel pagina = new JPanel(new BorderLayout());
 
         carrusel.add(pagina1, "pagina1");
         carrusel.add(pagina2, "pagina2");
         carrusel.add(pagina3, "pagina3");
-        
+
         // Configuración del botón de regresar al menú principal
         botonVolver.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/botonAtras.png")
-                )
-        );
+                        getClass().getResource("/botonAtras.png")));
         botonVolver.addActionListener(e -> {
             menuPrincipal ventana = new menuPrincipal();
             ventana.setVisible(true);
             this.dispose();
         });
-        
+
         // Configuración del botón para ir a la derecha
         BotonDerecha.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/flechaDere.jpg")
-                )
-        );
+                        getClass().getResource("/flechaDere.jpg")));
         BotonDerecha.addActionListener(e -> {
             if (paginaActual < totalPaginas) {
                 paginaActual++;
@@ -121,9 +135,7 @@ public class suma extends JFrame {
         // Configuración del botón para ir a la izquierda
         BotonIzquierda.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/flechaIzq.jpg")
-                )
-        );
+                        getClass().getResource("/flechaIzq.jpg")));
         BotonIzquierda.addActionListener(e -> {
             if (paginaActual > 1) {
                 paginaActual--;
@@ -131,7 +143,7 @@ public class suma extends JFrame {
                 actualizarPagina();
             }
         });
-        
+
         // Inicializa la visibilidad de las flechas según la página inicial
         actualizarPagina();
 
@@ -143,13 +155,61 @@ public class suma extends JFrame {
         add(carrusel, BorderLayout.CENTER);
     }
 
+    private JPanel crearPartesSuma() {
+        JPanel pagina = new JPanel(new BorderLayout());
+        JPanel operacion = new JPanel(new FlowLayout());
+        JLabel explicacion = new JLabel("Pulsa un botón");
+        JButton Sumando1 = new JButton("25");
+        JButton Sumando2 = new JButton("30");
+        JButton operador = new JButton("+");
+        JButton igualdad = new JButton("=");
+        JButton resultado = new JButton("55");
+        
+        Sumando1.addActionListener(e -> {
+            explicacion.setText("Este es el primer sumando");
+        });
+
+        operador.addActionListener(e -> {
+            explicacion.setText("Este es el operador suma");
+
+        });
+
+        Sumando2.addActionListener(e -> {
+            explicacion.setText("Este es el segundo sumando");
+
+        });
+        igualdad.addActionListener(e -> {
+            explicacion.setText("Este es el igual o igualdad");
+
+        });
+        resultado.addActionListener(e -> {
+            explicacion.setText("Este es el resultado");
+
+        });
+
+        pagina.add(operacion, BorderLayout.CENTER);
+        pagina.add(explicacion, BorderLayout.SOUTH);
+        operacion.add(Sumando1);
+        operacion.add(operador);
+        operacion.add(Sumando2);
+
+        operacion.add(igualdad);
+        operacion.add(resultado);
+
+
+        return pagina;
+
+    }
+
     /**
-     * Helper o método auxiliar para construir dinámicamente los paneles 
+     * Helper o método auxiliar para construir dinámicamente los paneles
      * que servirán como páginas en el juego.
      *
-     * @param texto El título o contenido textual que se mostrará en el centro del panel.
+     * @param texto El título o contenido textual que se mostrará en el centro del
+     *              panel.
      * @param color El color de fondo que tendrá el panel generado.
-     * @return Un objeto {@link JPanel} configurado con el fondo y la etiqueta correspondientes.
+     * @return Un objeto {@link JPanel} configurado con el fondo y la etiqueta
+     *         correspondientes.
      */
     private JPanel crearPagina(String texto, Color color) {
         JPanel panel = new JPanel();
@@ -164,8 +224,10 @@ public class suma extends JFrame {
     }
 
     /**
-     * Actualiza la visibilidad de los botones de navegación (BotonIzquierda y BotonDerecha) 
-     * dependiendo de la página del carrusel en la que se encuentre actualmente el usuario.
+     * Actualiza la visibilidad de los botones de navegación (BotonIzquierda y
+     * BotonDerecha)
+     * dependiendo de la página del carrusel en la que se encuentre actualmente el
+     * usuario.
      */
     private void actualizarPagina() {
         BotonIzquierda.setVisible(paginaActual > 1);

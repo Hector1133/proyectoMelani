@@ -7,10 +7,12 @@ package com.mycompany.juego_mates;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.util.Random;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +21,8 @@ import javax.swing.JTextArea;
 
 /**
  * Representa la interfaz gráfica y la lógica para el juego de restar.
- * Utiliza una estructura de carrusel (CardLayout) para mostrar diferentes páginas 
+ * Utiliza una estructura de carrusel (CardLayout) para mostrar diferentes
+ * páginas
  * con ejercicios matemáticos de restas por niveles.
  * 
  * @author Héctor Ruiz Rivera
@@ -27,32 +30,37 @@ import javax.swing.JTextArea;
  */
 public class multiplicacion extends JFrame {
 
-    /** Administrador de diseño para controlar el cambio de páginas en el carrusel. */
+    /**
+     * Administrador de diseño para controlar el cambio de páginas en el carrusel.
+     */
     private CardLayout cardLayout;
-    
+
     /** Panel contenedor que almacena las diferentes páginas del juego. */
     private JPanel carrusel;
-    
-    /** Índice que rastrea la página en la que se encuentra la jugadora actualmente. */
+
+    /**
+     * Índice que rastrea la página en la que se encuentra la jugadora actualmente.
+     */
     private int paginaActual = 1;
-    
+
     /** Cantidad total de páginas de ejercicios disponibles. */
     private int totalPaginas = 3;
 
     /** Botón para avanzar a la siguiente página de restas. */
     private JButton BotonDerecha;
-    
+
     /** Botón para retroceder a la página de restas anterior. */
     private JButton BotonIzquierda;
 
     /**
      * Constructor por defecto de la clase resta.
-     * Configura los elementos gráficos del carrusel, carga las imágenes de las flechas,
+     * Configura los elementos gráficos del carrusel, carga las imágenes de las
+     * flechas,
      * inicializa los eventos de navegación y ensambla la interfaz de usuario.
      */
     public multiplicacion() {
         Random random = new Random();
-        
+
         // Configuración y creación de la ventana
         setTitle("Resta");
         JLabel rest = new JLabel("¡Vamos a practicar las multiplicaciones!");
@@ -63,7 +71,7 @@ public class multiplicacion extends JFrame {
         setSize(800, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        
+
         // Creación de los botones de navegación
         JButton botonVolver = new JButton("");
         BotonDerecha = new JButton("");
@@ -77,9 +85,24 @@ public class multiplicacion extends JFrame {
         carrusel = new JPanel(cardLayout);
 
         // Crear las "páginas" del carrusel gráfico
-        JPanel pagina1 = crearPagina("Página 1", Color.RED); 
-        JTextArea definicion = new JTextArea("La multiplicación es una operación matemática" 
-          + "que consiste en sumar un mismo número varias veces de forma abreviada.");
+        JPanel pagina1 = crearPagina("Página 1", Color.RED);
+        JTextArea definicion = new JTextArea("La multiplicación es una operación matemática"
+                + "que consiste en sumar un mismo número varias veces de forma abreviada.");
+        definicion.setPreferredSize(new Dimension(550, 180));
+        definicion.setFont(new Font("Arial", Font.PLAIN, 22));
+
+        definicion.setLineWrap(true);
+        definicion.setWrapStyleWord(true);
+
+        definicion.setEditable(false);
+        definicion.setFocusable(false);
+
+        definicion.setOpaque(false);
+
+        definicion.setBorder(
+                BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        pagina1.add(definicion);
         pagina1.add(definicion);
         JPanel pagina2 = crearPagina("Página 2", Color.BLUE);
         JPanel pagina3 = crearPagina("Página 3", Color.GREEN);
@@ -87,25 +110,21 @@ public class multiplicacion extends JFrame {
         carrusel.add(pagina1, "pagina1");
         carrusel.add(pagina2, "pagina2");
         carrusel.add(pagina3, "pagina3");
-        
+
         // Configuración del botón de regresar al menú principal
         botonVolver.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/botonAtras.png")
-                )
-        );
+                        getClass().getResource("/botonAtras.png")));
         botonVolver.addActionListener(e -> {
             menuPrincipal ventana = new menuPrincipal();
             ventana.setVisible(true);
             this.dispose();
         });
-        
+
         // Configuración del botón para ir a la derecha
         BotonDerecha.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/flechaDere.jpg")
-                )
-        );
+                        getClass().getResource("/flechaDere.jpg")));
         BotonDerecha.addActionListener(e -> {
             if (paginaActual < totalPaginas) {
                 paginaActual++;
@@ -117,9 +136,7 @@ public class multiplicacion extends JFrame {
         // Configuración del botón para ir a la izquierda
         BotonIzquierda.setIcon(
                 new javax.swing.ImageIcon(
-                        getClass().getResource("/flechaIzq.jpg")
-                )
-        );
+                        getClass().getResource("/flechaIzq.jpg")));
         BotonIzquierda.addActionListener(e -> {
             if (paginaActual > 1) {
                 paginaActual--;
@@ -127,7 +144,7 @@ public class multiplicacion extends JFrame {
                 actualizarPagina();
             }
         });
-        
+
         // Inicializa la visibilidad de las flechas según la página inicial
         actualizarPagina();
 
@@ -140,12 +157,14 @@ public class multiplicacion extends JFrame {
     }
 
     /**
-     * Helper o método auxiliar para construir dinámicamente los paneles 
+     * Helper o método auxiliar para construir dinámicamente los paneles
      * que servirán como páginas en el juego.
      *
-     * @param texto El título o contenido textual que se mostrará en el centro del panel.
+     * @param texto El título o contenido textual que se mostrará en el centro del
+     *              panel.
      * @param color El color de fondo que tendrá el panel generado.
-     * @return Un objeto {@link JPanel} configurado con el fondo y la etiqueta correspondientes.
+     * @return Un objeto {@link JPanel} configurado con el fondo y la etiqueta
+     *         correspondientes.
      */
     private JPanel crearPagina(String texto, Color color) {
         JPanel panel = new JPanel();
@@ -160,8 +179,10 @@ public class multiplicacion extends JFrame {
     }
 
     /**
-     * Actualiza la visibilidad de los botones de navegación (BotonIzquierda y BotonDerecha) 
-     * dependiendo de la página del carrusel en la que se encuentre actualmente el usuario.
+     * Actualiza la visibilidad de los botones de navegación (BotonIzquierda y
+     * BotonDerecha)
+     * dependiendo de la página del carrusel en la que se encuentre actualmente el
+     * usuario.
      */
     private void actualizarPagina() {
         BotonIzquierda.setVisible(paginaActual > 1);
