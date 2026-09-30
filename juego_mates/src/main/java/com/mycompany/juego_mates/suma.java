@@ -13,11 +13,13 @@ import java.awt.Font;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  * Representa la interfaz gráfica y la lógica para el juego de restar.
@@ -29,6 +31,10 @@ import javax.swing.JTextArea;
  * @version 1.0
  */
 public class suma extends JFrame {
+    Random random = new Random();
+    int sumando1 = 0;
+    int sumando2 = 0;
+    int resultado = 0;
 
     /**
      * Administrador de diseño para controlar el cambio de páginas en el carrusel.
@@ -51,15 +57,16 @@ public class suma extends JFrame {
 
     /** Botón para retroceder a la página de restas anterior. */
     private JButton BotonIzquierda;
-
+    private JLabel calculoSuma;
     /**
      * Constructor por defecto de la clase resta.
      * Configura los elementos gráficos del carrusel, carga las imágenes de las
      * flechas,
      * inicializa los eventos de navegación y ensambla la interfaz de usuario.
      */
+    private JTextField respuestaJugador;
+
     public suma() {
-        Random random = new Random();
 
         // Configuración y creación de la ventana
         setTitle("sumas");
@@ -104,8 +111,13 @@ public class suma extends JFrame {
         JPanel pagina2 = crearPartesSuma();
 
         JPanel pagina3 = crearPagina("Ejercios prácticos", Color.GREEN);
+        respuestaJugador = new JTextField();
+        pagina3.add(respuestaJugador);
         JPanel pagina = new JPanel(new BorderLayout());
-
+        JLabel calculoSuma = new JLabel();
+        calculoSuma.setForeground(Color.BLUE);
+        calculoSuma.setText(sumando1 + " + " + sumando2 + " = " + resultado);
+        pagina3.add(calculoSuma);
         carrusel.add(pagina1, "pagina1");
         carrusel.add(pagina2, "pagina2");
         carrusel.add(pagina3, "pagina3");
@@ -128,6 +140,9 @@ public class suma extends JFrame {
             if (paginaActual < totalPaginas) {
                 paginaActual++;
                 cardLayout.show(carrusel, "pagina" + paginaActual);
+                if (paginaActual == 3) {
+                    generarSuma();
+                }
                 actualizarPagina();
             }
         });
@@ -164,7 +179,9 @@ public class suma extends JFrame {
         JButton operador = new JButton("+");
         JButton igualdad = new JButton("=");
         JButton resultado = new JButton("55");
-        
+        JPanel centroImg = new JPanel(new BorderLayout());
+        ImageIcon icono = new ImageIcon(getClass().getResource("/parteSuma.jpg"));
+        JLabel imagen = new JLabel(icono);
         Sumando1.addActionListener(e -> {
             explicacion.setText("Este es el primer sumando");
         });
@@ -186,17 +203,16 @@ public class suma extends JFrame {
             explicacion.setText("Este es el resultado");
 
         });
-
-        pagina.add(operacion, BorderLayout.CENTER);
-        pagina.add(explicacion, BorderLayout.SOUTH);
+        explicacion.setHorizontalAlignment(JLabel.CENTER);
+        pagina.add(centroImg, BorderLayout.CENTER);
+        pagina.add(explicacion, BorderLayout.NORTH);
         operacion.add(Sumando1);
         operacion.add(operador);
         operacion.add(Sumando2);
-
         operacion.add(igualdad);
         operacion.add(resultado);
-
-
+        centroImg.add(operacion, BorderLayout.NORTH);
+        centroImg.add(imagen, BorderLayout.CENTER);
         return pagina;
 
     }
@@ -232,5 +248,12 @@ public class suma extends JFrame {
     private void actualizarPagina() {
         BotonIzquierda.setVisible(paginaActual > 1);
         BotonDerecha.setVisible(paginaActual < totalPaginas);
+    }
+
+    private void generarSuma() {
+        sumando1 = random.nextInt(100) + 1;
+        sumando2 = random.nextInt(100) + 1;
+        resultado = sumando1 + sumando2;
+
     }
 }
